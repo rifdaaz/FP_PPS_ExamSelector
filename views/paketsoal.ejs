@@ -1,0 +1,169 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
+    
+        <title>Draft Soal</title>
+        <style>
+            /* Modify the background color */
+         
+            .navbar-custom {
+                background-color: #013880;
+            }
+            /* Modify brand and text color */
+         
+            .navbar-custom .navbar-brand,
+            .navbar-custom .navbar-text {
+                color: whitesmoke;
+            }
+            .button1 {
+                background-color: #013880; 
+            }
+            .button2 {
+                border-color: 5px #013880;
+                background-color: white;
+                color: #013880;
+                /* padding: 14px 28px;
+                font-size: 16px; */
+                cursor: pointer;
+            }
+
+            /* Blue */
+            .success {
+            border-color: #013880;
+            color: #013880;
+            }
+
+            .success:hover {
+            background-color: #013880;
+            color: white;
+            }
+            div.card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }               
+        </style>
+    </head>
+
+    <nav class="navbar navbar-expand-sm navbar-custom justify-content-end">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" style="color: whitesmoke"; href="#">myITS classroom</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a class="nav-link" style="color: whitesmoke"; href="#">Nama Dosen Pengampu</a></li>
+                <li class="nav-item">
+                    <iconify-icon icon="gridicons:user-circle" style="color: #c3cfd9;" width="35" height="35"></iconify-icon>
+                </li>  
+            </ul>
+          </div>
+    </nav>
+
+    <body style="background-color: F1F4F5;">
+        <div class="container">
+            <div class="row pt-3 text-xs font-bold">
+                <div class="col-lg-12">
+                    <p style="color: #013880;"><a href="/soal" style="color: #013880;">Draft Soal</a> / <a href="/paketsoal" style="color:#013880;">Ujian</a></p>
+                </div>
+            </div>
+            <div class="container mt-3">
+                <ul class="nav nav-tabs">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/soal">Draft Soal</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/paketsoal">Ujian</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/soal">Bab Materi</a>
+                  </li>
+                </ul>
+            </div>
+            <div class="row mb-3 mt-5">
+                <div class="col-lg-10">
+                    <h4>Detail Soal Ujian</h4>           
+                </div>
+                <div class="col-lg-2">
+                    <a href="/konfigurasi" class="btn button2 success float-right" style="width: 200px;">
+                        <iconify-icon icon="ion:list" style="color: #013880;" width="16" height="16"></iconify-icon>
+                        <p class="text-base font-bold" style="display: inline;">Riwayat Detail Ujian</p>
+                    </a>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-lg-12 pt-3" style="background-color: white; border-color: #c3cfd9;">
+                    <form method="post", action="/paketsoal/simpan">
+                        <div class="row px-4">
+                            <div class="col-lg-7 form-group">
+                                <label for="nama" class="font-bold">Judul Ujian :</label>
+                                <input type="text" class="form-control" name="nama" id="nama" placeholder="Paket Soal Baru ...">
+                            </div>
+                            <div class="col-lg-3 form-group">
+                                <label for="jumlah_soal" class="font-bold">Jumlah Soal :</label>
+                                <input type="number" class="form-control" name="jumlah_soal" id="jumlah_soal" placeholder="Jumlah Soal">
+                            </div>
+                            <div class="col-lg-2">
+                                <button class="btn btn-block button1 float-right mt-8" style="color: whitesmoke;" type="submit">
+                                    Simpan <iconify-icon icon="bxs:save" style="color: white;" width="16" height="16"></iconify-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="mb-8">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h4>Daftar Ujian</h4>           
+                </div>
+                <div class="col-lg-4">
+                    <form method="#" action="#">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Cari ujian">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary bg-white" style="border-color: #c3cfd9" type="submit">
+                                    <iconify-icon icon="gg:search" style="color: #c3cfd9;" width="20" height="20"></iconify-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </form>          
+                </div>
+            </div>
+            <div class="row px-3">
+                <div class="col-lg-12">
+
+                    <% paketsoal.forEach(function(ps){ %>
+
+                    <div class="row mb-2 pl-4 py-2" style="background-color: white; border-width: 2px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+                        <div class="col-sm-5 d-flex align-items-center">
+                            <span class="font-bold text-2xl px-2"><%= ps.nama %></span>
+                        </div>
+                        <div class="col-sm-4 d-flex justify-content-center align-items-center">
+                            <span class="font-bold text-base">Kode Ujian : </span><span class="ml-2"><%= ps.kode_paketsoal %></span>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="row mb-1 d-flex justify-content-center">
+                                <a href="/editkonfigurasi/<%= ps.id_paketsoal %>" class="btn button2 success" style="width: 180px;">
+                                    Lihat Detail Ujian <iconify-icon icon="icon-park-outline:setting-config" style="color: #013880;" width="16" height="16"></iconify-icon>
+                                </a>
+                            </div>
+                            <div class="row d-flex justify-content-center">
+                                <a href="/konfigurasi/<%= ps.id_paketsoal %>" class="btn button1" style="width: 180px; color: whitesmoke;">
+                                    Buka <iconify-icon icon="ion:open-outline" style="color: white;" width="16" height="16"></iconify-icon>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <% }); %>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
