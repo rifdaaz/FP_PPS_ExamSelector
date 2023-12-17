@@ -1,0 +1,132 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
+    
+        <title>Draft Soal</title>
+        <style>
+            /* Modify the background color */
+         
+            .navbar-custom {
+                background-color: #013880;
+            }
+            /* Modify brand and text color */
+         
+            .navbar-custom .navbar-brand,
+            .navbar-custom .navbar-text {
+                color: whitesmoke;
+            }
+            .button1 {
+                background-color: #013880; 
+            }
+            div.card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: left;
+            }            
+        </style>
+    </head>
+
+    <nav class="navbar navbar-expand-sm navbar-custom justify-content-end">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" style="color: whitesmoke"; href="#">myITS classroom</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a class="nav-link" style="color: whitesmoke"; href="#">Nama Dosen Pengampu</a></li>
+                <li class="nav-item">
+                    <iconify-icon icon="gridicons:user-circle" style="color: #c3cfd9;" width="35" height="35"></iconify-icon>
+                </li>  
+            </ul>
+          </div>
+    </nav>
+
+    <body style="background-color: F1F4F5;">
+        <div class="container">
+            <div class="container pt-3 text-xs font-bold">
+                <p style="color: #013880;"><a href="/soal" style="color: #013880;">Draft Soal</a> / Buat Soal</p>
+            </div>
+            <form method="post", action="/soal/simpan">
+                <div class="row px-16">
+                    <div class="col-sm-9">
+                        <h3>Buat Soal Baru</h3>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn button1 float-right" style="width: 150px; color: whitesmoke;" type="submit">
+                            Simpan <iconify-icon icon="bxs:save" style="color: white;" width="16" height="16"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+                <div class="card row mt-3 py-3" style="background-color: white; border-width: 2px">
+                    <div class="col-sm-12">
+                        <div class="row px-4">
+                            <div class="col-sm-5 form-group">
+                                <label for="id_topik" class="font-bold">Bab Materi Soal :</label>
+                                <select class="form-control" name="id_topik" id="id_topik">
+                                    <% topik.forEach(function(b){ %>
+                                        <option value="<%= b.id_topik %>"><%= b.nama_topik %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-5 form-group">
+                                <label for="tingkat_kesulitan" class="font-bold">Tingkat Kesulitan :</label>
+                                <select class="form-control" name="tingkat_kesulitan" id="tingkat_kesulitan">
+                                    <option value="1">Mudah</option>
+                                    <option value="2">Sedang</option>
+                                    <option value="3">Sulit</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row px-4">
+                            <div class="col-sm-12 form-group">
+                                <label for="pertanyaan" class="font-bold">Pertanyaan :</label>
+                                <textarea class="form-control" name="pertanyaan" id="pertanyaan" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="row px-4">
+                            <div class="col-sm-9 form-group">
+                                <label for="pilihan_a" class="font-bold">Pilihan A :</label>
+                                <textarea class="form-control" name="pilihan_a" id="pilihan_a" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <div class="row px-4">
+                            <div class="col-sm-9 form-group">
+                                <label for="pilihan_b" class="font-bold">Pilihan B :</label>
+                                <textarea class="form-control" name="pilihan_b" id="pilihan_b" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <div class="row px-4">
+                            <div class="col-sm-9 form-group">
+                                <label for="pilihan_c" class="font-bold">Pilihan C :</label>
+                                <textarea class="form-control" name="pilihan_c" id="pilihan_c" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <div class="row px-4">
+                            <div class="col-sm-9 form-group">
+                                <label for="pilihan_d" class="font-bold">Pilihan D :</label>
+                                <textarea class="form-control" name="pilihan_d" id="pilihan_d" rows="1"></textarea>
+                            </div>
+                        </div>
+                        <div class="row px-4">
+                            <div class="col-sm-5 form-group">
+                                <label for="pilihan_benar" class="font-bold">Pilihan Benar :</label>
+                                <select class="form-control" name="pilihan_benar" id="pilihan_benar">
+                                    <option value="1">Pilihan A</option>
+                                    <option value="2">Pilihan B</option>
+                                    <option value="3">Pilihan C</option>
+                                    <option value="4">Pilihan D</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
